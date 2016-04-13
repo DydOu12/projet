@@ -17,7 +17,6 @@ def index():
 		
 		for pers in admins:
 			i = i+1
-			print(pers[0])
 			
 		if(i == 0):
 			return template('accueil',erreur="",bd="",admin="True")
@@ -97,7 +96,6 @@ def index():
 					bdID = conn.execute('SELECT ID FROM Admin WHERE NOM=:Nom',{"Nom": nom})
 					
 					for j in bdID:
-						print(j[0])
 						idPers = j[0]
 					
 					listeAdmin = []
@@ -167,9 +165,7 @@ def index():
 		if(types == "modification"):
 			newPassword = request.forms.get('newPassword')
 						
-			print(str(newPassword))
-						
-			if(newPassword == None):
+			if(newPassword == ""):
 				return template('admin',cles=password, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Merci de rentrer un mot de passe",creation="",generation="")
 			else:	
 				hash_object = hashlib.sha1(newPassword.encode())
@@ -188,7 +184,6 @@ def index():
 				nomPersDel = conn.execute('SELECT Nom FROM Admin WHERE ID=:ID',{"ID":idSelect})
 				
 				for i in nomPersDel:
-					print(i[0])
 					nomDel = i[0]
 					
 				conn.execute('DELETE FROM Admin WHERE ID=:ID',{"ID":idSelect})
@@ -301,12 +296,31 @@ def index():
 def post():
 	conn = sqlite3.connect('../BD/BaseDeDonnee.db')
 	
+	
+	
 	activite = request.forms.get('activite')
 	codePostal = request.forms.get('codePostal')
 	niveau = request.forms.get('niveau')
 	handicap = request.forms.get('handicap')
-
+	
 	information = []
+	informations = []
+
+	if(activite == " "):
+		activite = ""
+
+	if(codePostal == " "):
+		codePostal = ""
+		
+	if(niveau == " "):
+		niveau = ""
+	
+	if(handicap == " "):
+		handicap = ""
+		
+	if(handicap == " "):
+		handicap = ""
+
 
 	# listeActivite = conn.execute('''SELECT * FROM Activite WHERE ActLib=? AND ComInsee=?''', (activite,codePostal))
 	if(activite == "" and codePostal != "" and niveau != ""):
@@ -349,14 +363,37 @@ def post():
 
 		if(len(valeurListe) > 20):
 			information.append(valeurListe)
+			
+			
+	if(activite == ""):
+		informations.append(" ")
+	else:
+		informations.append(activite)
+	
+	if(codePostal == ""):
+		informations.append(" ")
+	else:
+		informations.append(codePostal)
+	
+	if(niveau == ""):
+		informations.append(" ")
+	else:	
+		informations.append(niveau)
+	
+	if(handicap == ""):
+		informations.append(" ")
+	else: 
+		informations.append(handicap)
+	
+	return template('resultat',information = information,infoEntrePage=informations)
 
-	return template('resultat',information = information)
-
-@get('/recherche/<id>')
-def index(id):
+@get('/recherche/<id>/<activite>/<codePostal>/<niveau>/<handicap>')
+def index(id,activite,codePostal,niveau,handicap):
+	
 	conn = sqlite3.connect('../BD/BaseDeDonnee.db')
 
-	information =[] 
+	information =[]
+	informations = [] 
 
 	listeActivite = conn.execute("SELECT * FROM Activite WHERE ID=:ID", {"ID":int(id)})
 
@@ -377,8 +414,13 @@ def index(id):
 		for m in listeInstallation:
 			for n in m:
 				information.append(n)
+				
+	informations.append(activite)
+	informations.append(codePostal)
+	informations.append(niveau)
+	informations.append(handicap)
 
-	return template('carte',information = information)
+	return template('carte',information = information,infoEntrePage=informations)
 
 run(host='localhost', port=8080)
 

@@ -43,6 +43,13 @@
 <body style="text-align:center">
 	<h1> Installations Sportives des Pays de la Loire </h1>
 	
+	<form method="GET" action="/recherche" style="margin-bottom:20px;margin-top 20px;">
+	
+		<input type="submit" value=" Faire une recherche ">	
+	
+	</form>
+	
+	
 	<table style="text-align:left;margin:auto" cellspacing="0" cellpadding="0" id="table">
 
 		<thead style="background-color:#60B9CE">
@@ -68,37 +75,37 @@
 				<tr>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367;border-left:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[3] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[4] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[8] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[5] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[20] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}">
+						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
 							{{ proposition[18] }}
 						</a>
 					</td>
