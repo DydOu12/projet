@@ -68,7 +68,7 @@ def index():
 		elif(nom != "" and password != ""):
 		
 			bdPassword = conn.execute('SELECT Password FROM Admin WHERE NOM=:Nom',{"Nom": nom})
-			
+
 			i=0
 			
 			for j in bdPassword:
@@ -105,7 +105,6 @@ def index():
 						for information in personnes:
 							personne.append(information)
 						listeAdmin.append(personne)
-							
 					
 					return template('admin',cles=passwordStocker, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="",creation="",generation="")
 			
@@ -123,9 +122,9 @@ def index():
 @get('/admin')
 def index():
 	if os.path.isfile('../BD/BaseDeDonnee.db'):
-		return template('accueil',erreur="Accès refusé, merci de vous connectez pour accéder à cette partie du site",bd="",admin="")
+		return template('accueil',erreur="Accès refusé, merci de vous connecter pour accéder à cette partie du site",bd="",admin="")
 	else:
-		return template('accueil',erreur="Accès refusé, merci de vous connectez pour accéder à cette partie du site",bd="false",admin="")
+		return template('accueil',erreur="Accès refusé, merci de vous connecter pour accéder à cette partie du site",bd="false",admin="")
 
 
 @post('/admin')
@@ -141,7 +140,6 @@ def index():
 	
 	for j in idAdmin:
 		i = i+1
-
 	
 	if(i == 0):
 		return template('accueil',erreur="Merci de vous connectez pour accéder à cette partie du site",bd="",admin="")
@@ -295,8 +293,6 @@ def index():
 @post('/recherche')
 def post():
 	conn = sqlite3.connect('../BD/BaseDeDonnee.db')
-	
-	
 	
 	activite = request.forms.get('activite')
 	codePostal = request.forms.get('codePostal')
