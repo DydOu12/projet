@@ -11,22 +11,30 @@ def index():
 	"""
 		test
 	"""
+	# if database exists
 	if os.path.isfile('../BD/BaseDeDonnee.db'):
+		# it connects into
 		conn = sqlite3.connect('../BD/BaseDeDonnee.db')
 		
+		# informations from database administrators are selected
 		admins = conn.execute('SELECT * FROM Admin')
 		
+		# variable that count the number of administrators (number if line in database)
 		i = 0
 		
+		# for selected lines in database
 		for pers in admins:
+			# the number of administrator is incremented 
 			i = i+1
-			
+		
+		# if there's not administrators in database
 		if(i == 0):
 			return template('accueil',erreur="",bd="",admin="True")
+		# if not, there is (are)
 		else:
 			return template('accueil',erreur="",bd="",admin="")
 		
-		
+	# if the database does not exist 
 	else:
 		return template('accueil',erreur="",bd="false",admin="")
 			
@@ -34,55 +42,68 @@ def index():
 
 @post('/')
 def index():
+	# it connects to the database
 	conn = sqlite3.connect('../BD/BaseDeDonnee.db')
 	
+	# informations from form are recovered (whether administrator creation, whether authentication)
 	types = request.forms.get('types')
 	
+	# if it's the administrator creation form
 	if(types == "create"):
-		
+		# the pseudo and the password 's new administrator
 		nomCreate = request.forms.get('nomCreate')
 		passwordCreate = request.forms.get('passwordCreate')
 		
+		# if the pseudo is empty
 		if(nomCreate == ""):
 			return template('accueil',erreur="Un nom est obligatoire pour l'administrateur",bd="",admin="True")
+		# if the password is empty
 		elif(passwordCreate == ""):
 			return template('accueil',erreur="Un mot de passe est obligatoire pour l'administrateur",bd="",admin="True")
+		# if it's OK
 		elif(nomCreate != "" and passwordCreate != ""):
 			
+			# the password is crypted
 			hash_object = hashlib.sha1(passwordCreate.encode())
 			hex_digPassword = hash_object.hexdigest()
 			
+			# the administrator that has been just created is inserted in database
 			conn.execute('''INSERT INTO Admin (Nom,Password) VALUES (?,?)''',(nomCreate,hex_digPassword))
 			conn.commit()
 			return template('accueil',erreur="L'administrateur a bien été créé",bd="",admin="")
 			
-		
-			
-		
+	# if not, if it's the administrator authentication form
 	else:
-	
+		# the pseudo and the password seized by the user is recovered
 		nom = request.forms.get('nom')
 		password = request.forms.get('password')
 		
+		# if the pseudo is empty
 		if(nom == ""):
 			return template('accueil',erreur="Un administrateur a un nom",bd="",admin="")
+		# if the password is empty
 		elif(password == ""):
 			return template('accueil',erreur="Mot de passe obligatoire",bd="",admin="")
+		# if it's OK
 		elif(nom != "" and password != ""):
-		
+			# the password linked to the pseudo is selected (it's an sqlite3.Cursor object)
 			bdPassword = conn.execute('SELECT Password FROM Admin WHERE NOM=:Nom',{"Nom": nom})
-			
+
+			# variable that count the number of administrators (number if line in database)
 			i=0
 			
+			# the cursor sqlite3 object is traversed containing the password
 			for j in bdPassword:
+				# the number of administrator is incremented 
 				i = i+1
+				# the password in database is stored
 				passwordStocker = j[0]
 
-			
+			# if the number of administrator is equal to 0 (there is no lines in database)
 			if(i == 0):
 				return template('accueil',erreur="L'administrateur n'existe pas",bd="",admin="")
+			# if not, if there is (are) administrators in database
 			else:
-				
 				# Vérifier si le mot de passe écrit encoder corresponds à celui en base
 				
 				hash_object = hashlib.sha1(password.encode())
