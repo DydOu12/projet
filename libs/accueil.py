@@ -88,7 +88,7 @@ def index():
 				# Si les mots de passe de correspondent pas alors message d'erreur
 				
 				if(hex_digPassword != passwordStocker):
-					return template('accueil',erreur="Le mot de passe est erroné.",bd="",admin="")
+					return template('accueil',erreur="Le mot de passe ou le login est erroné.",bd="",admin="")
 				else:
 					
 					admins = conn.execute('SELECT * FROM Admin')
