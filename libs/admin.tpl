@@ -8,15 +8,12 @@
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script>
 
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-
-	<script type="text/javascript" src="../script/script.js"> </script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="style_calendar.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />hi
 
 	<style>	
 
-		a {
+		a 
+		{
 			text-decoration: none;
 			color:black;
 		}
@@ -49,7 +46,7 @@
 	
 	<form>
 	
-		<input type="button" value="Déconnection" onclick="disconnect()" style="float:right">
+		<input type="button" value="Déconnexion" onclick="disconnect()" style="float:right">
 	
 	</form>
 	
@@ -84,11 +81,11 @@
 					
 					<form method="POST" action="/admin">
 						
-						<input name="cles" type="text" value={{ cles }} style="visibility:hidden;position:absolute">
-						<input name="clesVerification" type="text" value={{ clesVerification }} style="visibility:hidden;position:absolute">
-						<input name="idPers" type="text" value={{ idPers }} style="visibility:hidden;position:absolute">
-						<input type="text" value="{{ personne[0] }}" style="visibility:hidden;position:absolute" name="idSelect">
-						<input type="text" value="modification" style="visibility:hidden;position:absolute" name="types">
+						<input name="cles" type="hidden" value={{ cles }}>
+						<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+						<input name="idPers" type="hidden" value={{ idPers }}>
+						<input type="hidden" value="{{ personne[0] }}" name="idSelect">
+						<input type="hidden" value="modification" name="types">
 										
 						<input type="password" name="newPassword">
 						
@@ -104,11 +101,11 @@
 				%else:
 					<form method="POST" action="/admin">
 						
-						<input name="cles" type="text" value={{ cles }} style="visibility:hidden;position:absolute">
-						<input name="clesVerification" type="text" value={{ clesVerification }} style="visibility:hidden;position:absolute">
-						<input type="text" value="{{ personne[0] }}" style="visibility:hidden;position:absolute" name="idSelect">
-						<input name="idPers" type="text" value={{ idPers }} style="visibility:hidden;position:absolute">
-						<input type="text" value="delete" style="visibility:hidden;position:absolute" name="types">
+						<input name="cles" type="hidden" value={{ cles }}>
+						<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+						<input type="hidden" value="{{ personne[0] }}" name="idSelect">
+						<input name="idPers" type="hidden" value={{ idPers }}>
+						<input type="hidden" value="delete" name="types">
 						
 						<input type="submit" value="Supprimer">
 					
@@ -141,10 +138,10 @@
 		
 			<tr>
 				
-				<input name="cles" type="text" value={{ cles }} style="visibility:hidden;position:absolute">
-				<input name="clesVerification" type="text" value={{ clesVerification }} style="visibility:hidden;position:absolute">
-				<input name="idPers" type="text" value={{ idPers }} style="visibility:hidden;position:absolute">
-				<input type="text" value="add" style="visibility:hidden;position:absolute" name="types">
+				<input name="cles" type="hidden" value={{ cles }}>
+				<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+				<input name="idPers" type="hidden" value={{ idPers }}>
+				<input type="hidden" value="add" name="types">
 				
 				<td> Nom : </td>
 				
@@ -184,11 +181,11 @@
 	<form method="POST" action="/admin" style="text-align:left">
 		
 				
-		<input name="cles" type="text" value={{ cles }} style="visibility:hidden;position:absolute">
-		<input name="clesVerification" type="text" value={{ clesVerification }} style="visibility:hidden;position:absolute">
-		<input name="idPers" type="text" value={{ idPers }} style="visibility:hidden;position:absolute">
+		<input name="cles" type="hidden" value={{ cles }}>
+		<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+		<input name="idPers" type="hidden" value={{ idPers }}>
 		
-		<input type="text" value="generation" style="visibility:hidden;position:absolute" name="types">
+		<input type="hidden" value="generation" name="types">
 		
 		<input type="submit" value="Générer" style="margin-left:200px;margin-top:20px">
 	

@@ -10,10 +10,6 @@
 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 
-	<script type="text/javascript" src="../script/script.js"> </script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="style_calendar.css">
-
 	<style>	
 
 		a {
@@ -66,7 +62,7 @@
 				<table style="text-align:left">
 					
 					%if admin == "":
-						<input type="text" name="types" style="visibility:hidden;position:absolute" value="exist">
+						<input type="hidden" name="types" value="exist">
 					
 						<tr>
 							
@@ -104,14 +100,14 @@
 							
 							<td td colspan=2 style="text-align:center">
 						
-								<input type="submit" value="Connection administrateur">
+								<input type="submit" value="Connexion administrateur">
 								
 							</td>
 							
 						</tr>
 						
 					%else:
-						<input type="text" name="types" style="visibility:hidden;position:absolute" value="create">
+						<input type="hidden" name="types" value="create">
 						
 					
 						<tr>
@@ -177,7 +173,7 @@
 						
 						<td colspan=2 style="text-align:center">
 					
-							<input type="button" value="Connection utilisateur" onclick="connection()">
+							<input type="button" value="Connexion utilisateur" onclick="connection()">
 							
 						</td>
 						

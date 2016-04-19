@@ -10,10 +10,6 @@
 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 
-	<script type="text/javascript" src="../script/script.js"> </script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="style_calendar.css">
-
 	<style>	
 
 		a {
