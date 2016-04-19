@@ -33,20 +33,6 @@
 <body style="text-align:center">
 	<h1> Installations Sportives des Pays de la Loire </h1>
 	
-	<form method="POST" action="/recherche" style="margin-bottom:20px;margin-top 20px;">
-		
-		<input name="activite" value="{{ infoEntrePage[0] }}" style="position:absolute;visibility:hidden">
-		
-		<input name="niveau" value="{{ infoEntrePage[2] }}" style="position:absolute;visibility:hidden"> 
-		
-		<input name="handicap" value="{{ infoEntrePage[3] }}" style="position:absolute;visibility:hidden">
-		
-		<input name="codePostal" value="{{ infoEntrePage[1] }}" style="position:absolute;visibility:hidden">
-	
-		<input type="submit" value=" Revenir au résultat ">	
-	
-	</form>
-	
 	<table style="text-align:center;margin:auto" cellspacing="0" cellpadding="0">
 
 		<thead style="background-color:#60B9CE">

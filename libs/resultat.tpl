@@ -75,37 +75,37 @@
 				<tr>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367;border-left:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[3] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[4] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[8] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[5] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[20] }}
 						</a>
 					</td>
 
 					<td style="padding:10px;border-right:1px solid #015367;border-right:1px solid #015367;border-bottom:1px solid #015367">
-						<a href="/recherche/{{ proposition[0] }}/{{ infoEntrePage[0] }}/{{ infoEntrePage[1] }}/{{ infoEntrePage[2] }}/{{ infoEntrePage[3] }}">
+						<a href="/recherche/{{ proposition[0] }}">
 							{{ proposition[18] }}
 						</a>
 					</td>
