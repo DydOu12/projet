@@ -82,7 +82,7 @@ def selectAllInstTwoArg(InsNumeroInstall,AmenagementAccesHand):
 	conn = connect()
 	return conn.execute("SELECT * FROM Installation WHERE InsNumeroInstall=:InsNumeroInstall AND AmenagementAccesHand=:AmenagementAccesHand", {"InsNumeroInstall": InsNumeroInstall,"AmenagementAccesHand":AmenagementAccesHand})
 
-def selectAllInstTwoArg(InsNumeroInstall):
+def selectAllInstOneArg(InsNumeroInstall):
 	conn = connect()
 	return conn.execute("SELECT * FROM Installation WHERE InsNumeroInstall=:InsNumeroInstall", {"InsNumeroInstall": InsNumeroInstall})
 

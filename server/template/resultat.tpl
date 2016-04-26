@@ -19,7 +19,8 @@
 			color:black;
 		}
 
-		tr:hover 
+
+		tbody tr:hover 
 		{
 			background-color: #04819E;
 		}
@@ -172,7 +173,7 @@
 				// Les lignes sont ajoutées à $tBody dans l’ordre de tri
 				.appendTo($tBody);
 			}
-			
+
 		}
 	); 
 	
