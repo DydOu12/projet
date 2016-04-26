@@ -11,8 +11,6 @@ bottle.TEMPLATE_PATH.insert(0, "../template/")
 
 DATA_PATH = '../../Data Base/DataBase.db'
 
-def connect():
-	return sqlite3.connect(DATA_PATH)
 
 @get('/') # ==> @route('/')
 def index():
@@ -20,9 +18,8 @@ def index():
 		test
 	"""
 	if os.path.isfile(DATA_PATH):
-		conn = connect()
 		
-		admins = conn.execute('SELECT * FROM Admin')
+		admins = FunctionDataBase.selectAdmin()
 		
 		i = 0
 		
@@ -33,16 +30,11 @@ def index():
 			return template('accueil',erreur="",bd="",admin="True")
 		else:
 			return template('accueil',erreur="",bd="",admin="")
-		
-		
-	else:
-		return template('accueil',erreur="",bd="false",admin="")
 			
 
 
 @post('/')
 def index():
-	conn = connect()
 	
 	types = request.forms.get('types')
 	
@@ -60,8 +52,9 @@ def index():
 			hash_object = hashlib.sha1(passwordCreate.encode())
 			hex_digPassword = hash_object.hexdigest()
 			
-			conn.execute('''INSERT INTO Admin (Nom,Password) VALUES (?,?)''',(nomCreate,hex_digPassword))
-			conn.commit()
+			# FunctionDataBase.CreateTableAdmin()
+			FunctionDataBase.insertAdmin(nomCreate,hex_digPassword)
+
 			return template('accueil',erreur="L'administrateur a bien été créé",bd="",admin="")
 			
 		
@@ -78,7 +71,7 @@ def index():
 			return template('accueil',erreur="Mot de passe obligatoire",bd="",admin="")
 		elif(nom != "" and password != ""):
 		
-			bdPassword = conn.execute('SELECT Password FROM Admin WHERE NOM=:Nom',{"Nom": nom})
+			bdPassword = FunctionDataBase.selectPassAdmin(nom)
 			
 			i=0
 			
@@ -102,9 +95,9 @@ def index():
 					return template('accueil',erreur="Le mot de passe ou le login est erroné.",bd="",admin="")
 				else:
 					
-					admins = conn.execute('SELECT * FROM Admin')
+					admins = FunctionDataBase.selectAdmin()
 					
-					bdID = conn.execute('SELECT ID FROM Admin WHERE NOM=:Nom',{"Nom": nom})
+					bdID = FunctionDataBase.selectIdAdmin(nom)
 					
 					for j in bdID:
 						idPers = j[0]
@@ -141,12 +134,11 @@ def index():
 
 @post('/admin')
 def index():
-	conn = connect()
 	
 	password = request.forms.get('cles')
 	nom = request.forms.get('clesVerification')
 	
-	idAdmin = conn.execute('SELECT ID FROM Admin WHERE NOM=:Nom AND Password=:Password',{"Nom": nom,"Password":password})
+	idAdmin = FunctionDataBase.selectIdWithpassAdmin(nom,password)
 	
 	i=0
 	
@@ -163,7 +155,7 @@ def index():
 		
 		idSelect = request.forms.get('idSelect')
 		
-		admins = conn.execute('SELECT * FROM Admin')
+		admins = FunctionDataBase.selectAdmin()
 			
 		listeAdmin = []
 		
@@ -182,26 +174,23 @@ def index():
 				hash_object = hashlib.sha1(newPassword.encode())
 				hex_digPassword = hash_object.hexdigest()
 						
-				conn.execute('UPDATE Admin SET Password=:Password WHERE ID=:ID',{"Password":hex_digPassword,"ID":idSelect})
-				
-				conn.commit()
-				
+
+				FunctionDataBase.updatePassAdmin(idSelect,hex_digPassword)
+
 				return template('admin',cles=hex_digPassword, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Le mot de passe de l'administrateur "+nom+" a bien été modifié",creation="",generation="")
 			
 		elif(types == "delete"):
 			if(idSelect == idPers):
 				return template('admin',cles=password, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Vous ne pouvez pas supprimer "+nom+" car il est actuellement connecté",creation="",generation="")
 			else:
-				nomPersDel = conn.execute('SELECT Nom FROM Admin WHERE ID=:ID',{"ID":idSelect})
+				nomPersDel = FunctionDataBase.selectNomAdmin(idSelect)
 				
 				for i in nomPersDel:
 					nomDel = i[0]
 					
-				conn.execute('DELETE FROM Admin WHERE ID=:ID',{"ID":idSelect})
+				FunctionDataBase.delAdmin(idSelect)
 				
-				conn.commit()
-				
-				admins = conn.execute('SELECT * FROM Admin')
+				admins = FunctionDataBase.selectAdmin()
 			
 				listeAdmin = []
 				
@@ -227,7 +216,7 @@ def index():
 				hash_object = hashlib.sha1(passwordCreate.encode())
 				hex_digPassword = hash_object.hexdigest()
 				
-				nomPersCreate = conn.execute('SELECT ID FROM Admin WHERE Nom=:Nom',{"Nom":nomCreate})
+				nomPersCreate = FunctionDataBase.selectIdAdmin(nomCreate)
 				
 				i=0
 	
@@ -237,11 +226,9 @@ def index():
 				if(i != 0):
 					return template('admin',cles=password, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="",creation=nomCreate + " existe déjà, veuillez rentrer un autre nom",generation="")
 				
-				conn.execute('''INSERT INTO Admin (Nom,Password) VALUES (?,?)''',(nomCreate,hex_digPassword))
+				FunctionDataBase.insertAdmin(nomCreate,hex_digPassword)
 				
-				conn.commit()
-				
-				admins = conn.execute('SELECT * FROM Admin')
+				admins = FunctionDataBase.selectAdmin()
 				
 				listeAdmin = []
 				
@@ -255,7 +242,7 @@ def index():
 				
 		elif(types == "generation"):
 			
-			admins = conn.execute('SELECT * FROM Admin')
+			admins = FunctionDataBase.selectAdmin()
 				
 			listeAdmin = []
 			
@@ -265,7 +252,7 @@ def index():
 					personne.append(information)
 				listeAdmin.append(personne)
 			
-			os.remove("DATA_PATH")
+			os.remove(DATA_PATH)
 			genererBD.test(listeAdmin)
 			#os.system("../BD/genererBD.py")
 			
@@ -275,11 +262,10 @@ def index():
 
 @get('/recherche') # ==> @route('/recherche')
 def index():
-	conn = connect()
 	
 	liste = []
 
-	activites = conn.execute('SELECT ActLib FROM Activite')
+	activites = FunctionDataBase.selectActivite('ActLib')
 
 	for i in activites:
 		present = i[0] in liste 
@@ -291,7 +277,7 @@ def index():
 
 	entrainement = []
 
-	nivact = conn.execute('SELECT ActNivLib FROM Activite')
+	nivact = FunctionDataBase.selectActivite('ActNivLib')
 
 	for j in nivact:
 		present = j[0] in entrainement
@@ -305,7 +291,6 @@ def index():
 
 @post('/recherche')
 def post():
-	conn = connect()
 	
 	activite = request.forms.get('activite')
 	codePostal = request.forms.get('codePostal')
@@ -314,40 +299,23 @@ def post():
 
 	information = []
 
-
-	# listeActivite = conn.execute('''SELECT * FROM Activite WHERE ActLib=? AND ComInsee=?''', (activite,codePostal))
-	if(activite == "" and codePostal != "" and niveau != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ComInsee=:ComInsee AND ActNivLib=:ActNivLib", {"ComInsee":int(codePostal),"ActNivLib":niveau})
-	elif(codePostal == "" and activite != "" and niveau != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ActLib =:ActLib AND ActNivLib=:ActNivLib", {"ActLib":activite,"ActNivLib":niveau})
-	elif(niveau == "" and activite != "" and codePostal != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ActLib =:ActLib AND ComInsee=:ComInsee", {"ActLib":activite,"ComInsee":int(codePostal)})
-	elif(activite == "" and codePostal == "" and niveau != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ActNivLib=:ActNivLib", {"ActNivLib":niveau})
-	elif(activite == "" and niveau == "" and codePostal != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ComInsee=:ComInsee", {"ComInsee":int(codePostal)})
-	elif(codePostal == "" and niveau == "" and activite != ""):
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ActLib =:ActLib", {"ActLib":activite})
-	elif(activite == "" and codePostal == "" and niveau == ""):
-		listeActivite = conn.execute("SELECT * FROM Activite")
-	else:
-		listeActivite = conn.execute("SELECT * FROM Activite WHERE ActLib =:ActLib AND ComInsee=:ComInsee AND ActNivLib=:ActNivLib", {"ActLib":activite,"ComInsee":int(codePostal),"ActNivLib":niveau})
-
+	listeActivite = FunctionDataBase.listeActivite(activite,codePostal,niveau,handicap)
+	
 	for i in listeActivite:
 		valeurListe = []
 		for j in i:
 			valeurListe.append(j)
 	
-		listeEquipement = conn.execute("SELECT * FROM Equipement WHERE EquipementID=:EquipementID", {"EquipementID": valeurListe[1]})
+		listeEquipement = FunctionDataBase.selectEquipement(valeurListe[1])
 
 		for k in listeEquipement:
 			for l in k:
 				valeurListe.append(l)
 
 		if(handicap != ""):
-			listeInstallation = conn.execute("SELECT * FROM Installation WHERE InsNumeroInstall=:InsNumeroInstall AND AmenagementAccesHand=:AmenagementAccesHand", {"InsNumeroInstall": valeurListe[9],"AmenagementAccesHand":handicap})
+			listeInstallation = FunctionDataBase.selectAllInstTwoArg(valeurListe[9],handicap)
 		else:
-			listeInstallation = conn.execute("SELECT * FROM Installation WHERE InsNumeroInstall=:InsNumeroInstall", {"InsNumeroInstall": valeurListe[9]})
+			listeInstallation = FunctionDataBase.selectAllInstTwoArg(valeurListe[9])
 
 
 		for m in listeInstallation:
@@ -362,26 +330,24 @@ def post():
 
 @get('/recherche/<id>')
 def index(id):
-	
-	conn = connect()
 
 	information =[]
 
-	listeActivite = conn.execute("SELECT * FROM Activite WHERE ID=:ID", {"ID":int(id)})
+	listeActivite = FunctionDataBase.selectAllActivite(int(id))
 
 	for i in listeActivite:
 		valeurListe = []
 		for j in i:
 			information.append(j)
 	
-		listeEquipement = conn.execute("SELECT * FROM Equipement WHERE EquipementID=:EquipementID", {"EquipementID": information[1]})
+		listeEquipement = FunctionDataBase.selectAllEquipement(information[1])
 
 		for k in listeEquipement:
 			for l in k:
 				information.append(l)
 
 
-		listeInstallation = conn.execute("SELECT * FROM Installation WHERE InsNumeroInstall=:InsNumeroInstall ", {"InsNumeroInstall": information[9]})
+		listeInstallation = FunctionDataBase.selectAllInstallation(information[9])
 
 		for m in listeInstallation:
 			for n in m:
@@ -390,10 +356,3 @@ def index(id):
 	return template('carte',information = information)
 
 run(host='localhost', port=8080)
-
-
-
-
-
-
-
