@@ -164,5 +164,3 @@ def test(listeAdmin):
 
 
 
-
-
