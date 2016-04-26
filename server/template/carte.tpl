@@ -33,7 +33,7 @@
 <body style="text-align:center">
 	<h1> Installations Sportives des Pays de la Loire </h1>
 	
-	<table style="text-align:center;margin:auto" cellspacing="0" cellpadding="0">
+	<table style="text-align:center;margin-right:auto;margin-left:auto;margin-top:60px" cellspacing="0" cellpadding="0">
 
 		<thead style="background-color:#60B9CE">
 
@@ -92,7 +92,7 @@
 
 	</table>
 
-	<div id="map" style="width:800px;height:800px;margin:auto"> 
+	<div id="map" style="width:600px;height:600px;margin-top:50px;margin-left:auto;margin-right:auto"> 
 
 	</div>
 

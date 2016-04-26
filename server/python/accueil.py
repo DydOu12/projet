@@ -315,7 +315,7 @@ def post():
 		if(handicap != ""):
 			listeInstallation = FunctionDataBase.selectAllInstTwoArg(valeurListe[9],handicap)
 		else:
-			listeInstallation = FunctionDataBase.selectAllInstTwoArg(valeurListe[9])
+			listeInstallation = FunctionDataBase.selectAllInstOneArg(valeurListe[9])
 
 
 		for m in listeInstallation:
