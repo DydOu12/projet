@@ -4,6 +4,8 @@ import hashlib
 import os
 import os.path
 
+if os.path.isfile('../../Data Base/DataBase.db'):
+	os.remove("../../Data Base/DataBase.db")
 
 def test(listeAdmin):
 

@@ -9,7 +9,7 @@ import FunctionDataBase
 
 bottle.TEMPLATE_PATH.insert(0, "../template/")
 
-DATA_PATH = '../../BD/DataBase.db'
+DATA_PATH = '../../Data Base/DataBase.db'
 
 def connect():
 	return sqlite3.connect(DATA_PATH)
@@ -20,7 +20,7 @@ def index():
 		test
 	"""
 	if os.path.isfile(DATA_PATH):
-		connect()
+		conn = connect()
 		
 		admins = conn.execute('SELECT * FROM Admin')
 		
@@ -42,7 +42,7 @@ def index():
 
 @post('/')
 def index():
-	connect()
+	conn = connect()
 	
 	types = request.forms.get('types')
 	
@@ -141,7 +141,7 @@ def index():
 
 @post('/admin')
 def index():
-	connect()
+	conn = connect()
 	
 	password = request.forms.get('cles')
 	nom = request.forms.get('clesVerification')
@@ -275,7 +275,7 @@ def index():
 
 @get('/recherche') # ==> @route('/recherche')
 def index():
-	connect()
+	conn = connect()
 	
 	liste = []
 
@@ -305,7 +305,7 @@ def index():
 
 @post('/recherche')
 def post():
-	connect()
+	conn = connect()
 	
 	activite = request.forms.get('activite')
 	codePostal = request.forms.get('codePostal')
@@ -363,7 +363,7 @@ def post():
 @get('/recherche/<id>')
 def index(id):
 	
-	connect()
+	conn = connect()
 
 	information =[]
 
