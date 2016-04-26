@@ -4,9 +4,6 @@ import hashlib
 import os
 import os.path
 
-if os.path.isfile('../../Data Base/DataBase.db'):
-	os.remove("../../Data Base/DataBase.db")
-
 def test(listeAdmin):
 
 	nameAct = "../../ressources/Activite.csv"
@@ -94,12 +91,6 @@ def test(listeAdmin):
 	# Entre Equipement et Activité EquipementID
 	# Entre Equipement et installation NumeroInstallation
 
-
-	# Enumeration i 1,2,3,4,5,6
-		# for i, x in enumerate(l):
-		#     print(y)
-
-
 	# Création du fichier 
 
 	conn = sqlite3.connect('../../Data Base/DataBase.db')
@@ -161,42 +152,15 @@ def test(listeAdmin):
 	finally:
 		fileEquip.close()
 		
-	if(len(listeAdmin) != 0):
-		
-		CreateTableAdmin()
-
-		for personne in listeAdmin:
-					
-			#Cryptage du mot de passe de l'admin grâce au SHA-1
-			
-			AddEntryAdmin(personne[1],personne[2])
-			
-
-		# On envoie les données dans le fichier .db
-	else:
-		CreateTableAdmin()
+	CreateTableAdmin()
 
 	conn.commit()
-
-	#test = conn.execute('SELECT * FROM Activite')
-
-	#for i in test:
-	#     print("\n")
-	#     phrase = ""
-	#     for j in i:
-	#         phrase = phrase + str(j) + " / "
-	#     print(phrase)
-	#phrase = ""
-	#for i in test:
-	#    phrase = phrase + str(i[0]) + "/"
-	#print(phrase)
 
 
 
 	# On ferme toutes les actions relative aux SQL
 
 	conn.close()
-
 
 
 
