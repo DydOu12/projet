@@ -11,16 +11,14 @@
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 
 	<style>	
-
 		a {
 			text-decoration: none;
 			color:black;
 		}
 
-		h1{
+		h1 {
 			color:#38B2CE;
 		}
-
 	</style>
 </head>
 
@@ -28,109 +26,72 @@
 	<h1> Installations Sportives des Pays de la Loire </h1>
 
 	<table style="margin:auto;text-align:left">
-
 		<tbody>
-
 			<form action="" method="POST"> 
-
 				<tr>
-
 					<td style="color:#015367">
 						<label for="activite"> Choisissez votre activié : </label>
 					</td>
 
 					<td>
-
 						<select id="activite" name="activite"> 
-
-							%for activite in liste:
-									<option>{{activite}}</option>
+							<!-- activity  corresponds to each element of sports without duplicates -->
+							%for activity in liste:
+								<option>{{activity}}</option>
 							%end
-
 						</select>
-
 					</td> 
-
 				</tr>
 
 				<tr>
-
 					<td style="color:#015367">
 						<label for="entrainement"> Niveau d'activité choisi : </label>
 					</td>
 
 					<td>
 						<select id="entrainement" name="niveau"> 
-
+							<!-- types  corresponds to each element of levels of competition without duplicates -->
 							%for types in nivact:
 								<option>{{ types }}</option>
 							%end
-
 						</select> 
-
 					</td>
-
 				</tr>
 
 				<tr>
-
 					<td style="color:#015367">
-
 						<label for="handicap"> Accès handicapé : </label>
-
 					</td>
 
 					<td>
-
 						<select id="handicap" name="handicap">
-				
 							<option></option>
-
 							<option>Non</option>
-
 							<option>Oui</option>
-
-
 						</select>
 
 					</td>
-
 				</tr>
 
 				<tr>
-
 					<td style="color:#015367">
-			
 						<label for="codePostal"> Entez votre code postal : </label>
-
 					</td>
 
 					<td>
-
 						<input type="text" value="" id="codePostal" name="codePostal"/> 
-
 					</td>
-
 				</tr>
 
-				<tr style="height:20px">
-
-				</tr>
+				<tr style="height:20px"> </tr>
 
 				<tr style="text-align:center">
-
 					<td colspan=2>
-
 						<input id="ok" type="submit" value="Valider"/>
-
 					</td>
-
 				</tr>
-
 			</form>
-
 		</tbody>
-
 	</table>
 
 </body>

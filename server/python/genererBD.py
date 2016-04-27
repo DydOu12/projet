@@ -81,7 +81,7 @@ def test(listeAdmin):
 		(ID INTEGER PRIMARY KEY AUTOINCREMENT,Nom TEXT, Password TEXT)''')
 	
 	"""
-	"""
+	"""'&'
 	def AddEntryAdmin(Nom,Password):
 		conn.execute('''INSERT INTO Admin (Nom,Password)
 		VALUES (?,?)''',(Nom,Password))
