@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 from bottle import template,request
 import bottle
@@ -6,12 +8,14 @@ import hashlib
 bottle.TEMPLATE_PATH.insert(0, "../template/")
 
 class Accueil():
-
-	# def __init__(self,):
-	# 	self.ma_var = x
+	"""
+	Corresponding to treatment for the first page the user/administrator will see
+	"""
 
 	def get_accueil(self,DATA_PATH,db):
-
+		"""
+		Permit to redirect the page to connexion or the creation of the data base
+		"""
 		# if the database already exists
 		if os.path.isfile(DATA_PATH):
 			conn = db.connect()
@@ -38,6 +42,13 @@ class Accueil():
 			return template('accueil',erreur="Aucune base de données présente sur le site",bd="false",admin="")
 
 	def post_accueil(self,db):
+		"""
+		Permit to trate the case of 
+			the click on the button allowing the creation of an administrator  
+			or to check authentication
+		"""
+		
+		# connexion to the database
 		conn = db.connect()
 	
 		# informations from form are recovered (whether administrator creation, whether authentication)

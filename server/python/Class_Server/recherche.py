@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 from bottle import template,request
 import bottle 
@@ -6,8 +8,65 @@ import generateDB
 bottle.TEMPLATE_PATH.insert(0, "../template/")
 
 class Recherche():
+	"""
+	Corresponding to actions made when the users research informations
+	"""
+
+	def get_recherche(self,db):
+		"""
+		Permit to print 4 fields allowing to the user to research what he wants
+		"""
+
+		# connexion to the database
+		conn = db.connect()
+	
+		liste = []
+
+		# ActLib attribute is selected from Activite table
+		activites = db.selectActivite('ActLib',conn)
+
+		# all activities are traversed 
+		for i in activites:
+			# check if the current element is in the list
+			present = i[0] in liste 
+			# if the current element isn't present in the list
+			if(present == False):
+				# it's add to the list
+				liste.append(i[0])
+		
+		# the list is sorted
+		liste.sort()
+		# the head of the column of the CSV is removed
+		liste.remove('ActLib')
+
+		entrainement = []
+
+		# ActLib attribute is selected from Activite table
+		nivact = db.selectActivite('ActNivLib',conn)
+
+		# all levels are traversed 
+		for j in nivact:
+			# check if the current element is in the list
+			present = j[0] in entrainement
+			# if the current element isn't present in the list
+			if(present == False):
+				# it's add to the list
+				entrainement.append(j[0])
+
+		# the head of the column of the CSV is removed
+		entrainement.remove('ActNivLib')
+		# the list is sorted
+		entrainement.sort()
+
+		return template('formulaire',liste=liste, nivact=entrainement)
+
 
 	def post_recherche(self,db):
+		"""
+		Permit to treate data according to what the user is looking for
+		"""
+
+		# connexion to the database
 		conn = db.connect()
 		
 		# each information necessary are recovered
@@ -61,52 +120,13 @@ class Recherche():
 				
 		return template('resultat',information = information)
 
-	def get_recherche(self,db):
-
-		conn = db.connect()
-	
-		liste = []
-
-		# ActLib attribute is selected from Activite table
-		activites = db.selectActivite('ActLib',conn)
-
-		# all activities are traversed 
-		for i in activites:
-			# check if the current element is in the list
-			present = i[0] in liste 
-			# if the current element isn't present in the list
-			if(present == False):
-				# it's add to the list
-				liste.append(i[0])
-		
-		# the list is sorted
-		liste.sort()
-		# the head of the column of the CSV is removed
-		liste.remove('ActLib')
-
-		entrainement = []
-
-		# ActLib attribute is selected from Activite table
-		nivact = db.selectActivite('ActNivLib',conn)
-
-		# all levels are traversed 
-		for j in nivact:
-			# check if the current element is in the list
-			present = j[0] in entrainement
-			# if the current element isn't present in the list
-			if(present == False):
-				# it's add to the list
-				entrainement.append(j[0])
-
-		# the head of the column of the CSV is removed
-		entrainement.remove('ActNivLib')
-		# the list is sorted
-		entrainement.sort()
-
-		return template('formulaire',liste=liste, nivact=entrainement)
-
 
 	def get_rechercher_id(self,db,id):
+		"""
+		Permit to zoom on accurate data in the goal to situate with GMaps the place it is 
+		"""
+		
+		# connexion to the database
 		conn = db.connect()
 
 		information =[]

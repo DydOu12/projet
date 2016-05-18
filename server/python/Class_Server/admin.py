@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 from bottle import template, request
 import bottle 
@@ -7,8 +9,15 @@ import generateDB
 bottle.TEMPLATE_PATH.insert(0, "../template/")
 
 class Admin():
+	"""
+	Corresponding to actions made when you are an administrator
+	"""
 
 	def get_admin(self,DATA_PATH,db):
+		"""
+		Permit to know if administrators already exist
+		"""
+
 		# if the database already exists
 		if os.path.isfile(DATA_PATH):
 			return template('accueil',erreur="Accès refusé, merci de vous connectez pour accéder à cette partie du site",bd="",admin="")
@@ -17,6 +26,12 @@ class Admin():
 			return template('accueil',erreur="Accès refusé, merci de vous connectez pour accéder à cette partie du site",bd="false",admin="")
 
 	def post_admin(self, DATA_PATH, db):
+		"""
+		Permit to treate the cases of delete, add, update an administrator
+		and update the database (regeneration)
+		"""
+
+		# connexion to the database
 		conn = db.connect()
 
 		# contain the password of the administrator when he logged
@@ -82,13 +97,12 @@ class Admin():
 					# the new password is edited in the database
 					db.updatePassAdmin(idSelect,hex_digPassword,conn)
 
-					nomPersDel = db.selectNomAdmin(idSelect,conn)
+					# selection of administrator in database
+					nomPersUpd = db.selectNomAdmin(idSelect,conn)
 					
 					# inside this object, the pseudo is recovered
-					for i in nomPersDel:
+					for i in nomPersUpd:
 						nomUpd = i[0]
-
-
 
 					return template('admin',cles=hex_digPassword, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Le mot de passe de l'administrateur "+nomUpd+" a bien été modifié",creation="",generation="")
 			
