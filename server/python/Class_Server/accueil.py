@@ -38,13 +38,16 @@ class Accueil():
 			return template('accueil',erreur="Aucune base de données présente sur le site",bd="false",admin="")
 
 	def post_accueil(self,db):
-
 		conn = db.connect()
 	
 		# informations from form are recovered (whether administrator creation, whether authentication)
-		
+		types = request.forms.get('types')
+
 		# if it's the administrator creation form
 		if(types == "create"):
+
+			nomCreate = request.forms.get('nomCreate')
+			passwordCreate = request.forms.get('passwordCreate')
 			
 			# if the pseudo is empty
 			if(nomCreate == ""):

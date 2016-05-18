@@ -2,6 +2,7 @@ import os
 from bottle import template, request
 import bottle 
 import hashlib
+import generateDB
 
 bottle.TEMPLATE_PATH.insert(0, "../template/")
 
@@ -15,7 +16,7 @@ class Admin():
 		else:
 			return template('accueil',erreur="Accès refusé, merci de vous connectez pour accéder à cette partie du site",bd="false",admin="")
 
-	def post_admin(self, db):
+	def post_admin(self, DATA_PATH, db):
 		conn = db.connect()
 
 		# contain the password of the administrator when he logged
@@ -38,8 +39,6 @@ class Admin():
 			return template('accueil',erreur="Merci de vous connectez pour accéder à cette partie du site",bd="",admin="")
 		# if not, if there is (are) administrators in database
 		else:
-			conn = db.connect()
-
 			# the type of the form is recovered to know which action will be realised
 			types = request.forms.get('types')
 			
@@ -79,11 +78,19 @@ class Admin():
 				else:	
 					hash_object = hashlib.sha1(newPassword.encode())
 					hex_digPassword = hash_object.hexdigest()
-							
+						
 					# the new password is edited in the database
 					db.updatePassAdmin(idSelect,hex_digPassword,conn)
 
-					return template('admin',cles=hex_digPassword, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Le mot de passe de l'administrateur "+nom+" a bien été modifié",creation="",generation="")
+					nomPersDel = db.selectNomAdmin(idSelect,conn)
+					
+					# inside this object, the pseudo is recovered
+					for i in nomPersDel:
+						nomUpd = i[0]
+
+
+
+					return template('admin',cles=hex_digPassword, clesVerification=nom,admin=listeAdmin,idPers=idPers,information="Le mot de passe de l'administrateur "+nomUpd+" a bien été modifié",creation="",generation="")
 			
 			# if the focus form is this to delete an administrator
 			elif(types == "delete"):
@@ -197,6 +204,8 @@ class Admin():
 					# an array of array is got 
 					listeAdmin.append(personne)
 				
+				conn.close()
+
 				# the database is removed
 				os.remove(DATA_PATH)
 				# then it's regenerated

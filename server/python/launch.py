@@ -50,7 +50,7 @@ def index():
 
 @post('/admin')
 def index():
-	return admin.post_admin(db)
+	return admin.post_admin(DATA_PATH, db)
 
 @get('/recherche') # ==> @route('/recherche')
 def index():
