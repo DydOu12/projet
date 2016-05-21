@@ -20,10 +20,10 @@ class Creation():
 		
 		# if the database already exists
 		if os.path.isfile(DATA_PATH):
-			return template('accueil',erreur="La base de donnée est déjà existante",bd="",admin="")
+			return template('home',error="La base de donnée est déjà existante",bd="",admin="")
 		# if not, if the database does not exist
 		else:
-			listeAdmin = []
+			listAdmin = []
 			# all tables for the database are created
-			generateDB.GenerateDB(listeAdmin)
-			return template('accueil',erreur="La base a bien été créé",bd="",admin="True")
+			generateDB.GenerateDB(listAdmin)
+			return template('home',error="La base a bien été créé",bd="",admin="True")

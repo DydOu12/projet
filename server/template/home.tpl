@@ -58,11 +58,11 @@
 					
 						<tr>		
 							<td>			
-								<label for="nom" style="color: #04819E"> Nom : </label>			
+								<label for="name" style="color: #04819E"> Nom : </label>			
 							</td>
 							
 							<td>			
-								<input type="text" size="30" id="nom" name="nom">					
+								<input type="text" size="30" id="name" name="name">					
 							</td>
 						</tr>
 						
@@ -94,19 +94,19 @@
 				
 						<tr>
 							<td>
-								<label for="nomCreate" style="color: #04819E"> Nom : </label>
+								<label for="nameCreated" style="color: #04819E"> Nom : </label>
 							</td>
 							<td>
-								<input type="text" size="30" id="nomCreate" name="nomCreate">
+								<input type="text" size="30" id="nameCreated" name="nameCreated">
 							</td>
 						</tr>
 					
 						<tr>
 							<td>
-								<label for="passwordCreate" style="color: #04819E"> Password : </label>
+								<label for="passwordCreated" style="color: #04819E"> Password : </label>
 							</td>
 							<td>
-								<input type="password" size="30" id="passwordCreate" name="passwordCreate">	
+								<input type="password" size="30" id="passwordCreated" name="passwordCreated">	
 							</td>						
 						</tr>
 
@@ -127,10 +127,10 @@
 					</tr>
 					
 					<!-- if in the returning template, an error is informed -->
-					%if erreur != "":
+					%if error != "":
 						<tr>					
 							<td colspan=2 style="text-align:center">					
-								<p>{{ erreur }}</p>							
+								<p>{{ error }}</p>							
 							</td>					
 						</tr>
 					%end

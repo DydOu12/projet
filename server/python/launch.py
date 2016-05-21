@@ -12,18 +12,18 @@ sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 
 from functionDataBase import FunctionDataBase 
-from accueil import Accueil
+from home import Home
 from creation import Creation
 from admin import Admin
-from recherche import Recherche
+from research import Research
 
 
 DATA_PATH = '../../Data Base/DataBase.db'
 
 db = FunctionDataBase()
-a = Accueil()
+a = Home()
 c = Creation()
-r = Recherche()
+r = Research()
 admin = Admin()
 
 
@@ -34,7 +34,7 @@ def printHome():
 		nobody is in database
 		or to authenticate
 	"""
-	return a.get_accueil(DATA_PATH,db)
+	return a.get_home(DATA_PATH,db)
 
 @post('/')
 def treatAuthCreate():
@@ -43,7 +43,7 @@ def treatAuthCreate():
 		the click on the button allowing the creation of an administrator  
 		or to check authentication
 	"""
-	return a.post_accueil(db)
+	return a.post_home(db)
 
 	
 @get('/creation')
@@ -75,21 +75,21 @@ def printDataResearch():
 	"""
 	Permit to print 4 fields allowing to the user to research what he wants
 	"""
-	return r.get_recherche(db)
+	return r.get_research(db)
 
 @post('/recherche')
 def treatDataResearch():
 	"""
 	Permit to treate data according to what the user is looking for
 	"""
-	return r.post_recherche(db)
+	return r.post_research(db)
 
 @get('/recherche/<id>')
 def detailDataResearch(id):
 	"""
 	Permit to zoom on accurate data in the goal to situate with GMaps the place it is 
 	"""
-	return r.get_rechercher_id(db,id)
+	return r.get_research_id(db,id)
 
 
 # lauching of the server

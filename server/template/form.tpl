@@ -30,13 +30,13 @@
 			<form action="" method="POST"> 
 				<tr>
 					<td style="color:#015367">
-						<label for="activite"> Choisissez votre activié : </label>
+						<label for="activity"> Choisissez votre activité : </label>
 					</td>
 
 					<td>
-						<select id="activite" name="activite"> 
+						<select id="activity" name="activity"> 
 							<!-- activity  corresponds to each element of sports without duplicates -->
-							%for activity in liste:
+							%for activity in list:
 								<option>{{activity}}</option>
 							%end
 						</select>
@@ -45,13 +45,13 @@
 
 				<tr>
 					<td style="color:#015367">
-						<label for="entrainement"> Niveau d'activité choisi : </label>
+						<label for="training"> Niveau d'activité choisi : </label>
 					</td>
 
 					<td>
-						<select id="entrainement" name="niveau"> 
+						<select id="training" name="level"> 
 							<!-- types  corresponds to each element of levels of competition without duplicates -->
-							%for types in nivact:
+							%for types in levAct:
 								<option>{{ types }}</option>
 							%end
 						</select> 
@@ -75,11 +75,11 @@
 
 				<tr>
 					<td style="color:#015367">
-						<label for="codePostal"> Entez votre code postal : </label>
+						<label for="postalCode"> Entez votre code postal : </label>
 					</td>
 
 					<td>
-						<input type="text" value="" id="codePostal" name="codePostal"/> 
+						<input type="text" value="" id="postalCode" name="postalCode"/> 
 					</td>
 				</tr>
 

@@ -31,7 +31,7 @@
 			</th>
 
 			<th style="padding:10px;border-right:1px solid #015367;border-top:1px solid #015367;border-bottom:1px solid #015367;color:#206676"> 
-				Niveau 
+				Niveau
 			</th>
 
 			<th style="padding:10px;border-right:1px solid #015367;border-top:1px solid #015367;border-bottom:1px solid #015367;color:#206676"> 

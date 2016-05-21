@@ -63,20 +63,20 @@
 		</thead>
 	
 		<tbody>
-			<!-- personne attribute corresponds to each administrators in database -->
-			%for personne in admin:
+			<!-- person attribute corresponds to each administrators in database -->
+			%for person in admin:
 			<tr>
 				<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367;border-left:1px solid #015367">
 					<!-- Corresponding to the pseudo of all administrators -->
-					{{ personne[1] }}
+					{{ person[1] }}
 				</td>
 
 				<td style="padding:10px;border-right:1px solid #015367;border-bottom:1px solid #015367"> 
 					<form method="POST" action="/admin">
-						<input name="cles" type="hidden" value={{ cles }}>
-						<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+						<input name="keys" type="hidden" value={{ keys }}>
+						<input name="keysVerification" type="hidden" value={{ keysVerification }}>
 						<input name="idPers" type="hidden" value={{ idPers }}>
-						<input type="hidden" value="{{ personne[0] }}" name="idSelect">
+						<input type="hidden" value="{{ person[0] }}" name="idSelect">
 						<input type="hidden" value="modification" name="types">
 										
 						<input type="password" name="newPassword">
@@ -89,14 +89,14 @@
 					<!-- idPers contains the administrator's ID currently logged 
 					So if the administrator's ID currenty logged is equal to this of the currently traversed administrator 
 					it's impossible to delete him -->
-					%if int(personne[0]) == int(idPers):
+					%if int(person[0]) == int(idPers):
 						 Suppression impossible car connecté 
 					<!-- if not, it's possible to delete the administrator because he is not logged -->
 					%else:
 						<form method="POST" action="/admin">
-							<input name="cles" type="hidden" value={{ cles }}>
-							<input name="clesVerification" type="hidden" value={{ clesVerification }}>
-							<input type="hidden" value="{{ personne[0] }}" name="idSelect">
+							<input name="keys" type="hidden" value={{ keys }}>
+							<input name="keysVerification" type="hidden" value={{ keysVerification }}>
+							<input type="hidden" value="{{ person[0] }}" name="idSelect">
 							<input name="idPers" type="hidden" value={{ idPers }}>
 							<input type="hidden" value="delete" name="types">
 							
@@ -119,8 +119,8 @@
 	<table style="margin-left:200px;">
 		<form method="POST" action="/admin">
 			<tr>
-				<input name="cles" type="hidden" value={{ cles }}>
-				<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+				<input name="keys" type="hidden" value={{ keys }}>
+				<input name="keysVerification" type="hidden" value={{ keysVerification }}>
 				<input name="idPers" type="hidden" value={{ idPers }}>
 				<input type="hidden" value="add" name="types">
 				
@@ -129,7 +129,7 @@
 				</td>
 
 				<td> 
-					<input type="text" name="nom">
+					<input type="text" name="name">
 				</td>
 				
 				<td> 
@@ -155,8 +155,8 @@
 	<h3 style="margin-left:200px;text-align:left;margin-top:100px;"><u>Regénérer la base de donnée (si csv modifié)</u></h3>
 	
 	<form method="POST" action="/admin" style="text-align:left">
-		<input name="cles" type="hidden" value={{ cles }}>
-		<input name="clesVerification" type="hidden" value={{ clesVerification }}>
+		<input name="keys" type="hidden" value={{ keys }}>
+		<input name="keysVerification" type="hidden" value={{ keysVerification }}>
 		<input name="idPers" type="hidden" value={{ idPers }}>
 		
 		<input type="hidden" value="generation" name="types">

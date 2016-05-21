@@ -1,15 +1,15 @@
-../
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html><head><title>Python: module recherche</title>
+<html><head><title>Python: module admin</title>
 <meta charset="utf-8">
 </head><body bgcolor="#f0f0f8">
 
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>recherche</strong></big></big></font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>admin</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/cygdrive/c/Users/Dylan/Desktop/projet/server/python/Class_Server/recherche.py">/cygdrive/c/Users/Dylan/Desktop/projet/server/python/Class_Server/recherche.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="../../python/Class_Server/admin.py">/projet/server/python/Class_Server/admin.py</a></font></td></tr></table>
     <p><tt>#&nbsp;coding:&nbsp;utf-8</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -19,9 +19,10 @@
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="../bottle.html">bottle</a><br>
-</td><td width="25%" valign=top><a href="generateDB.html">generateDB</a><br>
+</td><td width="25%" valign=top><a href="../generateDB.html">generateDB</a><br>
+</td><td width="25%" valign=top><a href="hashlib.html">hashlib</a><br>
 </td><td width="25%" valign=top><a href="os.html">os</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -29,23 +30,22 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="recherche.html#Recherche">Recherche</a>
+<dt><font face="helvetica, arial"><a href="admin.html#Admin">Admin</a>
 </font></dt></dl>
  <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Recherche">class <strong>Recherche</strong></a></font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Admin">class <strong>Admin</strong></a></font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>Corresponding&nbsp;to&nbsp;actions&nbsp;made&nbsp;when&nbsp;the&nbsp;users&nbsp;research&nbsp;informations<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>Corresponding&nbsp;to&nbsp;actions&nbsp;made&nbsp;when&nbsp;you&nbsp;are&nbsp;an&nbsp;administrator<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Recherche-get_recherche"><strong>get_recherche</strong></a>(self, db)</dt><dd><tt>Permit&nbsp;to&nbsp;print&nbsp;4&nbsp;fields&nbsp;allowing&nbsp;to&nbsp;the&nbsp;user&nbsp;to&nbsp;research&nbsp;what&nbsp;he&nbsp;wants</tt></dd></dl>
+<dl><dt><a name="Admin-get_admin"><strong>get_admin</strong></a>(self, DATA_PATH, db)</dt><dd><tt>Permit&nbsp;to&nbsp;know&nbsp;if&nbsp;administrators&nbsp;already&nbsp;exist</tt></dd></dl>
 
-<dl><dt><a name="Recherche-get_rechercher_id"><strong>get_rechercher_id</strong></a>(self, db, id)</dt><dd><tt>Permit&nbsp;to&nbsp;zoom&nbsp;on&nbsp;accurate&nbsp;data&nbsp;in&nbsp;the&nbsp;goal&nbsp;to&nbsp;situate&nbsp;with&nbsp;GMaps&nbsp;the&nbsp;place&nbsp;it&nbsp;is</tt></dd></dl>
-
-<dl><dt><a name="Recherche-post_recherche"><strong>post_recherche</strong></a>(self, db)</dt><dd><tt>Permit&nbsp;to&nbsp;treate&nbsp;data&nbsp;according&nbsp;to&nbsp;what&nbsp;the&nbsp;user&nbsp;is&nbsp;looking&nbsp;for</tt></dd></dl>
+<dl><dt><a name="Admin-post_admin"><strong>post_admin</strong></a>(self, DATA_PATH, db)</dt><dd><tt>Permit&nbsp;to&nbsp;treate&nbsp;the&nbsp;cases&nbsp;of&nbsp;delete,&nbsp;add,&nbsp;update&nbsp;an&nbsp;administrator<br>
+and&nbsp;update&nbsp;the&nbsp;database&nbsp;(regeneration)</tt></dd></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
