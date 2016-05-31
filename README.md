@@ -1,4 +1,4 @@
-# ${1:Installation Sportives des Pays de la Loire}
+# Installation Sportives des Pays de la Loire
 This project has as objective to implement a sports activities research system of Pays de la Loire.
 ## Installation
 TODO: Describe the installation process
