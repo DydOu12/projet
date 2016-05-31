@@ -2,7 +2,7 @@
 This project has as objective to implement a sports activities research system of Pays de la Loire.
 
 ## Getting Started
-To start this project, it's necessary to be placed in this folder : 
+To start this project, it's necessary to be placed in this **folder** : 
 ```
 Server\python
 ```
@@ -14,20 +14,20 @@ Then, in a naviguator, typed this URL :
 ```
 localhost:8080
 ```
-Two choices present themselves to you :
+Two choices present themselves to you : <br/>
 	1. To connect as an administrator (or create the first account if none exists)
 	2. To research sports activities as user
 
-If you connect as an administrator you can :
+If you connect as an administrator you can : <br/>
 	1. add an administrator
 	2. remove an administrator 
 	3. update an administrator password
 
-If you decide to research sports activities, you can fill :
+If you decide to research sports activities, you can fill : <br/>
 	1. the name of the activity
 	2. the level of the activity
 	3. if there is a disabled access
-	4. the zip code of the sport activity place
+	4. the zip code of the sport activity place <br/>
 
 Each field is not obligatory. If none of field is filled, all data will research.
 
