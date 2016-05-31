@@ -10,13 +10,14 @@ Once done, this command has to be typed :
 `python3 lauch.py`
 
 ## Usage
-Then, in a naviguator, typed this URL : 
+Then, in a naviguator, typed this **URL** : 
 ```
 localhost:8080
 ```
 Two choices present themselves to you : <br/>
+	<pre> <code>
 	1. To connect as an administrator (or create the first account if none exists)
-	2. To research sports activities as user
+	2. To research sports activities as user </code> </pre>
 
 If you connect as an administrator you can : <br/>
 	1. add an administrator
