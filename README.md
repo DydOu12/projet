@@ -1,17 +1,48 @@
 # Installation Sportives des Pays de la Loire
 This project has as objective to implement a sports activities research system of Pays de la Loire.
-## Installation
-TODO: Describe the installation process
+
+## Getting Started
+To start this project, it's necessary to be placed in this folder : 
+```
+Server\python
+```
+Once done, this command has to be typed : 
+`python3 lauch.py`
+
 ## Usage
-TODO: Write usage instructions
+Then, in a naviguator, typed this URL : 
+```
+localhost:8080
+```
+Two choices present themselves to you :
+	1. To connect as an administrator (or create the first account if none exists)
+	2. To research sports activities as user
+
+If you connect as an administrator you can :
+	1. add an administrator
+	2. remove an administrator 
+	3. update an administrator password
+
+If you decide to research sports activities, you can fill :
+	1. the name of the activity
+	2. the level of the activity
+	3. if there is a disabled access
+	4. the zip code of the sport activity place
+
+Each field is not obligatory. If none of field is filled, all data will research.
+
 ## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+	1. Fork it!
+	2. Create your feature branch: `git checkout -b my-new-feature`
+	3. Commit your changes: `git commit -am 'Add some feature'`
+	4. Push to the branch: `git push origin my-new-feature`
+	5. Submit a pull request :D
+
 ## History
-TODO: Write history
+	During the last semester of the second year of Informatic IUT
+
 ## Credits
-TODO: Write credits
-## License
+	Made by Ronan Pouénat & Dylan Monneau
+
+## Licence
+	In Institute Technology of Nantes  
