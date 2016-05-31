@@ -1,7 +1,7 @@
-<snippet>
-  <content><![CDATA[
+<!-- <snippet>
+  <content> -->
 
-	# ${1:Installations Sportives des Pays de la Loire }
+	# Installations Sportives des Pays de la Loire 
 	This project has as objective to implement a research system of Sports in Pays de la Loire.
 
 	## Installation
@@ -26,6 +26,6 @@
 	## License
 	TODO: Write license
 
-	]]></content>
+<!-- 	</content>
   <tabTrigger>readme</tabTrigger>
-</snippet>
+</snippet> -->
