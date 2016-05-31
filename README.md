@@ -15,22 +15,22 @@ Then, in a naviguator, typed this **URL** :
 localhost:8080
 ```
 Two choices present themselves to you :
-	<pre> <code>
+	<code>
 	1. To connect as an *administrator* (or create the first account if none exists)
-	2. To research sports activities as *user* </code> </pre>
+	2. To research sports activities as *user* </code> 
 
 If you connect as an administrator you can :
-	<pre> <code>
+	 <code>
 	1. *add* an administrator
 	2. *remove* an administrator 
-	3. *update* an administrator password </code> </pre>
+	3. *update* an administrator password </code> 
 
 If you decide to research sports activities, you *can* fill :
-	<pre> <code>
+	<code>
 	1. the name of the activity
 	2. the level of the activity
 	3. if there is a disabled access
-	4. the zip code of the sport activity place </code> </pre>
+	4. the zip code of the sport activity place </code> 
 
 Each field is **not obligatory**. If none of field is filled, all datas will researched.
 
