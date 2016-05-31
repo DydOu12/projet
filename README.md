@@ -27,10 +27,10 @@ If you connect as an administrator you can :
 
 If you decide to research sports activities, you *can* fill :
 	<code>
-	1. the name of the activity<br/>
-	2. the level of the activity<br/>
-	3. if there is a disabled access<br/>
-	4. the zip code of the sport activity place </code> 
+	1. the name of the activity</code><br/>
+	<code>2. the level of the activity</code><br/>
+	<code>3. if there is a disabled access</code><br/>
+	<code>4. the zip code of the sport activity place </code> 
 
 Each field is **not obligatory**. If none of field is filled, all datas will researched.
 
