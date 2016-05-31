@@ -14,7 +14,7 @@ Then, in a naviguator, typed this **URL** :
 ```
 localhost:8080
 ```
-Two choices present themselves to you :
+Two choices present themselves to you : <br/>
 	<code>
 	1. To connect as an *administrator* (or create the first account if none exists)
 	2. To research sports activities as *user* </code> 
