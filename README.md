@@ -26,7 +26,7 @@ Two choices present themselves to you :
 
 If you connect as an administrator you can :
 
-	1. _add_ an administrator
+1. _add_ an administrator
 	2. *remove* an administrator
 	3. *update* an administrator password 
 
