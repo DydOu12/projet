@@ -19,6 +19,11 @@ Two choices present themselves to you :
 	1. To connect as an *administrator* (or create the first account if none exists) 
 	2. To research sports activities as *user*
 
+Two choices present themselves to you : 
+
+	1. To connect as an *administrator* (or create the first account if none exists) <br/>
+	2. To research sports activities as *user* 
+
 If you connect as an administrator you can :
 
 	1. *add* an administrator
@@ -51,5 +56,9 @@ Each field is **not obligatory**. If none of field is filled, all datas will res
 	Made by **Ronan Pouénat** & *Dylan Monneau*
 
 ## Licence
+<<<<<<< HEAD
 
 	In Institute Technology of Nantes  
+=======
+	In Institute Technology of Nantes  
+>>>>>>> 61e7fb88ad72891d27aaae3662895d2219c8646c
