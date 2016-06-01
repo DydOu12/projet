@@ -56,9 +56,7 @@ Each field is **not obligatory**. If none of field is filled, all datas will res
 	Made by **Ronan Pouénat** & *Dylan Monneau*
 
 ## Licence
-<<<<<<< HEAD
 
 	In Institute Technology of Nantes  
-=======
-	In Institute Technology of Nantes  
->>>>>>> 61e7fb88ad72891d27aaae3662895d2219c8646c
+
+
