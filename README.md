@@ -21,7 +21,7 @@ Two choices present themselves to you :
 
 Two choices present themselves to you : 
 
-	1. To connect as an *administrator* (or create the first account if none exists) <br/>
+	1. To connect as an *administrator* (or create the first account if none exists) 
 	2. To research sports activities as *user* 
 
 If you connect as an administrator you can :
